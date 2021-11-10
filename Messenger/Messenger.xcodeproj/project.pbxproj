@@ -7,18 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		476A0000273C4ECA0011470F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AFFFF273C4ECA0011470F /* RegisterViewController.swift */; };
 		476AFFD7273C47EA0011470F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AFFD6273C47EA0011470F /* AppDelegate.swift */; };
 		476AFFD9273C47EA0011470F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AFFD8273C47EA0011470F /* SceneDelegate.swift */; };
 		476AFFDB273C47EA0011470F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AFFDA273C47EA0011470F /* ViewController.swift */; };
 		476AFFDE273C47EA0011470F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 476AFFDC273C47EA0011470F /* Main.storyboard */; };
 		476AFFE0273C47F10011470F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 476AFFDF273C47F10011470F /* Assets.xcassets */; };
 		476AFFE3273C47F10011470F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 476AFFE1273C47F10011470F /* LaunchScreen.storyboard */; };
-		476AFFF1273C4BC80011470F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AFFF0273C4BC70011470F /* LoginViewController.swift */; };
-		476AFFF3273C4BDB0011470F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AFFF2273C4BDB0011470F /* RegisterViewController.swift */; };
 		476AFFF5273C4C1D0011470F /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AFFF4273C4C1D0011470F /* PhotoViewerViewController.swift */; };
 		476AFFF7273C4C310011470F /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AFFF6273C4C310011470F /* VideoPlayerViewController.swift */; };
 		476AFFF9273C4C700011470F /* NewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AFFF8273C4C700011470F /* NewConversationViewController.swift */; };
 		476AFFFB273C4C8B0011470F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AFFFA273C4C8B0011470F /* ProfileViewController.swift */; };
+		476AFFFE273C4EAC0011470F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AFFFD273C4EAC0011470F /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,12 +30,12 @@
 		476AFFDF273C47F10011470F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		476AFFE2273C47F10011470F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		476AFFE4273C47F10011470F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		476AFFF0273C4BC70011470F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		476AFFF2273C4BDB0011470F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		476AFFF4273C4C1D0011470F /* PhotoViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewController.swift; sourceTree = "<group>"; };
 		476AFFF6273C4C310011470F /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		476AFFF8273C4C700011470F /* NewConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationViewController.swift; sourceTree = "<group>"; };
 		476AFFFA273C4C8B0011470F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		476AFFFD273C4EAC0011470F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		476AFFFF273C4ECA0011470F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +49,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		476A0001273C4EE10011470F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				476AFFFD273C4EAC0011470F /* LoginViewController.swift */,
+				476AFFFF273C4ECA0011470F /* RegisterViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		476AFFCA273C47EA0011470F = {
 			isa = PBXGroup;
 			children = (
@@ -82,8 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				476AFFDA273C47EA0011470F /* ViewController.swift */,
-				476AFFF0273C4BC70011470F /* LoginViewController.swift */,
-				476AFFF2273C4BDB0011470F /* RegisterViewController.swift */,
+				476A0001273C4EE10011470F /* Login */,
 				476AFFF4273C4C1D0011470F /* PhotoViewerViewController.swift */,
 				476AFFF6273C4C310011470F /* VideoPlayerViewController.swift */,
 				476AFFF8273C4C700011470F /* NewConversationViewController.swift */,
@@ -204,12 +212,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				476AFFF1273C4BC80011470F /* LoginViewController.swift in Sources */,
-				476AFFF3273C4BDB0011470F /* RegisterViewController.swift in Sources */,
+				476A0000273C4ECA0011470F /* RegisterViewController.swift in Sources */,
 				476AFFF9273C4C700011470F /* NewConversationViewController.swift in Sources */,
 				476AFFDB273C47EA0011470F /* ViewController.swift in Sources */,
 				476AFFF7273C4C310011470F /* VideoPlayerViewController.swift in Sources */,
 				476AFFD7273C47EA0011470F /* AppDelegate.swift in Sources */,
+				476AFFFE273C4EAC0011470F /* LoginViewController.swift in Sources */,
 				476AFFFB273C4C8B0011470F /* ProfileViewController.swift in Sources */,
 				476AFFD9273C47EA0011470F /* SceneDelegate.swift in Sources */,
 				476AFFF5273C4C1D0011470F /* PhotoViewerViewController.swift in Sources */,
