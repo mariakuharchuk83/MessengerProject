@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		476A0000273C4ECA0011470F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AFFFF273C4ECA0011470F /* RegisterViewController.swift */; };
+		476A0003273D0FCA0011470F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476A0002273D0FC90011470F /* Extensions.swift */; };
 		476AFFD7273C47EA0011470F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AFFD6273C47EA0011470F /* AppDelegate.swift */; };
 		476AFFD9273C47EA0011470F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AFFD8273C47EA0011470F /* SceneDelegate.swift */; };
 		476AFFDB273C47EA0011470F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AFFDA273C47EA0011470F /* ViewController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		476A0002273D0FC90011470F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		476AFFD3273C47EA0011470F /* Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		476AFFD6273C47EA0011470F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		476AFFD8273C47EA0011470F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			children = (
 				476AFFD6273C47EA0011470F /* AppDelegate.swift */,
 				476AFFD8273C47EA0011470F /* SceneDelegate.swift */,
+				476A0002273D0FC90011470F /* Extensions.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 				476AFFDB273C47EA0011470F /* ViewController.swift in Sources */,
 				476AFFF7273C4C310011470F /* VideoPlayerViewController.swift in Sources */,
 				476AFFD7273C47EA0011470F /* AppDelegate.swift in Sources */,
+				476A0003273D0FCA0011470F /* Extensions.swift in Sources */,
 				476AFFFE273C4EAC0011470F /* LoginViewController.swift in Sources */,
 				476AFFFB273C4C8B0011470F /* ProfileViewController.swift in Sources */,
 				476AFFD9273C47EA0011470F /* SceneDelegate.swift in Sources */,
