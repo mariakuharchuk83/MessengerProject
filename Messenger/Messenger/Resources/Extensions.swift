@@ -38,9 +38,10 @@ extension UIView{
 
 
 extension UIColor {
-    
+    //0x0EAB19
     struct CustomColors{
         static let lightPink = UIColor.init(netHex: 0xF68DA0)
+        static let lightGreen = UIColor.init(netHex: 0x0FBD1B)
     }
     
     convenience init(red: Int, green: Int, blue: Int) {
