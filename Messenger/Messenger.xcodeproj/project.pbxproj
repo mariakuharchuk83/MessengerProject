@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4733787A27416F93006DCAB2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4733787927416F92006DCAB2 /* GoogleService-Info.plist */; };
 		476A0000273C4ECA0011470F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AFFFF273C4ECA0011470F /* RegisterViewController.swift */; };
 		476A0003273D0FCA0011470F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476A0002273D0FC90011470F /* Extensions.swift */; };
 		476AFFD7273C47EA0011470F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AFFD6273C47EA0011470F /* AppDelegate.swift */; };
@@ -20,9 +21,11 @@
 		476AFFF9273C4C700011470F /* NewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AFFF8273C4C700011470F /* NewConversationViewController.swift */; };
 		476AFFFB273C4C8B0011470F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AFFFA273C4C8B0011470F /* ProfileViewController.swift */; };
 		476AFFFE273C4EAC0011470F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AFFFD273C4EAC0011470F /* LoginViewController.swift */; };
+		A55F3BF6DAA67B8642344E3D /* Pods_Messenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF539D1D3DB15D0604AC2FB0 /* Pods_Messenger.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4733787927416F92006DCAB2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		476A0002273D0FC90011470F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		476AFFD3273C47EA0011470F /* Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		476AFFD6273C47EA0011470F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +41,9 @@
 		476AFFFA273C4C8B0011470F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		476AFFFD273C4EAC0011470F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		476AFFFF273C4ECA0011470F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		525D0711992C59937EE308FE /* Pods-Messenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Messenger.debug.xcconfig"; path = "Target Support Files/Pods-Messenger/Pods-Messenger.debug.xcconfig"; sourceTree = "<group>"; };
+		AF539D1D3DB15D0604AC2FB0 /* Pods_Messenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Messenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F999753DC112DB81F0DDC081 /* Pods-Messenger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Messenger.release.xcconfig"; path = "Target Support Files/Pods-Messenger/Pods-Messenger.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,12 +51,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A55F3BF6DAA67B8642344E3D /* Pods_Messenger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		439CFDDDC1A7D960187CEE45 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				525D0711992C59937EE308FE /* Pods-Messenger.debug.xcconfig */,
+				F999753DC112DB81F0DDC081 /* Pods-Messenger.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		476A0001273C4EE10011470F /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -65,6 +81,8 @@
 			children = (
 				476AFFD5273C47EA0011470F /* Messenger */,
 				476AFFD4273C47EA0011470F /* Products */,
+				439CFDDDC1A7D960187CEE45 /* Pods */,
+				49912A1D5D9718C6EFF93CCE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,6 +97,7 @@
 		476AFFD5273C47EA0011470F /* Messenger */ = {
 			isa = PBXGroup;
 			children = (
+				4733787927416F92006DCAB2 /* GoogleService-Info.plist */,
 				476AFFEE273C48C80011470F /* Resources */,
 				476AFFED273C48B90011470F /* ViewModels */,
 				476AFFEC273C48AE0011470F /* Models */,
@@ -144,6 +163,14 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
+		49912A1D5D9718C6EFF93CCE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AF539D1D3DB15D0604AC2FB0 /* Pods_Messenger.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -151,9 +178,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 476AFFE7273C47F10011470F /* Build configuration list for PBXNativeTarget "Messenger" */;
 			buildPhases = (
+				8EB7988A9E78178A85522EA9 /* [CP] Check Pods Manifest.lock */,
 				476AFFCF273C47EA0011470F /* Sources */,
 				476AFFD0273C47EA0011470F /* Frameworks */,
 				476AFFD1273C47EA0011470F /* Resources */,
+				BD882A1F9BAE53C8423D4449 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -203,12 +232,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				476AFFE3273C47F10011470F /* LaunchScreen.storyboard in Resources */,
+				4733787A27416F93006DCAB2 /* GoogleService-Info.plist in Resources */,
 				476AFFE0273C47F10011470F /* Assets.xcassets in Resources */,
 				476AFFDE273C47EA0011470F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8EB7988A9E78178A85522EA9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Messenger-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BD882A1F9BAE53C8423D4449 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Messenger/Pods-Messenger-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Messenger/Pods-Messenger-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Messenger/Pods-Messenger-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		476AFFCF273C47EA0011470F /* Sources */ = {
@@ -368,6 +440,7 @@
 		};
 		476AFFE8273C47F10011470F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 525D0711992C59937EE308FE /* Pods-Messenger.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -398,6 +471,7 @@
 		};
 		476AFFE9273C47F10011470F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F999753DC112DB81F0DDC081 /* Pods-Messenger.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
