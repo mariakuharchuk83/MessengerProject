@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4733787A27416F93006DCAB2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4733787927416F92006DCAB2 /* GoogleService-Info.plist */; };
+		4733787C27426AB8006DCAB2 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4733787B27426AB8006DCAB2 /* DatabaseManager.swift */; };
 		476A0000273C4ECA0011470F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AFFFF273C4ECA0011470F /* RegisterViewController.swift */; };
 		476A0003273D0FCA0011470F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476A0002273D0FC90011470F /* Extensions.swift */; };
 		476AFFD7273C47EA0011470F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AFFD6273C47EA0011470F /* AppDelegate.swift */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		4733787927416F92006DCAB2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4733787B27426AB8006DCAB2 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		476A0002273D0FC90011470F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		476AFFD3273C47EA0011470F /* Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		476AFFD6273C47EA0011470F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				476AFFD6273C47EA0011470F /* AppDelegate.swift */,
 				476AFFD8273C47EA0011470F /* SceneDelegate.swift */,
 				476A0002273D0FC90011470F /* Extensions.swift */,
+				4733787B27426AB8006DCAB2 /* DatabaseManager.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				476A0000273C4ECA0011470F /* RegisterViewController.swift in Sources */,
+				4733787C27426AB8006DCAB2 /* DatabaseManager.swift in Sources */,
 				476AFFF9273C4C700011470F /* NewConversationViewController.swift in Sources */,
 				476AFFDB273C47EA0011470F /* ViewController.swift in Sources */,
 				476AFFF7273C4C310011470F /* VideoPlayerViewController.swift in Sources */,

@@ -18,7 +18,7 @@ class RegisterViewController: UIViewController {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "person")
+        imageView.image = UIImage(systemName: "person.circle")
         imageView.tintColor = UIColor.CustomColors.lightPink
         imageView.contentMode = .scaleAspectFit
         imageView.layer.masksToBounds = true
@@ -174,19 +174,33 @@ class RegisterViewController: UIViewController {
         
         //Firebase Log In
         
-        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password){ authResult, error in
-            guard let result = authResult,error == nil
+        DataBaseManager.shared.userExists(with: email) {[weak self] exists in
+            guard let strongSelf = self
             else{
-                print("Error while creating a new user")
                 return
             }
-            let user = result.user
-            print("Created user: \(user)")
-          }
+            
+            guard !exists else{
+                //user already exists
+                strongSelf.alertUserLoginError(message: "User account for that email is already exists.")
+                return
+            }
+            
+            FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password){ authResult, error in
+                guard authResult != nil, error == nil
+                else{
+                    print("Error while creating a new user")
+                    return
+                }
+               
+                DataBaseManager.shared.insertUser(with: ChatAppUser(firstname: firstName, lastName: lastName, emailAdress: email))
+                strongSelf.navigationController?.dismiss(animated: true, completion: nil)
+              }
+        }
     }
     
-    func alertUserLoginError(){
-        let alert = UIAlertController(title: "Oops..", message: "Please enter all information correctly", preferredStyle: .alert)
+    func alertUserLoginError(message: String = "Please, enter all information correctly"){
+        let alert = UIAlertController(title: "Oops..", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
         present(alert, animated: true)
     }
