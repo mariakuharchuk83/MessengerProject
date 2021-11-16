@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import FBSDKLoginKit
 
 class LoginViewController: UIViewController {
 
@@ -65,6 +66,16 @@ class LoginViewController: UIViewController {
         return button
     }()
     
+    private let loginButtonFB: FBLoginButton = {
+            let button = FBLoginButton()
+            button.permissions = ["public_profile", "email"]
+            button.layer.cornerRadius = 12
+            button.layer.masksToBounds = true
+            button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
+            return button
+    }()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Log In"
@@ -75,6 +86,7 @@ class LoginViewController: UIViewController {
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         emailField.delegate = self
         passwordField.delegate = self
+        loginButtonFB.delegate = self
         
         /// Add subviews
         view.addSubview(scrollView)
@@ -82,6 +94,7 @@ class LoginViewController: UIViewController {
         scrollView.addSubview(emailField)
         scrollView.addSubview(passwordField)
         scrollView.addSubview(loginButton)
+        scrollView.addSubview(loginButtonFB)
     }
     
     override func viewDidLayoutSubviews() {
@@ -97,6 +110,8 @@ class LoginViewController: UIViewController {
         
         loginButton.frame = CGRect(x: 30, y: passwordField.buttom+20, width: scrollView.width-60, height: 52)
         
+        loginButtonFB.frame = CGRect(x: 30, y: loginButton.buttom+20, width: scrollView.width-60, height: 52)
+        
     }
     
     @objc private func loginButtonTapped(){
@@ -110,7 +125,8 @@ class LoginViewController: UIViewController {
               }
         
         //Firebase Log In
-        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password){ [weak self] authResult,
+        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password){
+            [weak self] authResult,
             error in
             
             guard let strongSelf = self
@@ -145,8 +161,8 @@ class LoginViewController: UIViewController {
 
 
 
-extension LoginViewController : UITextFieldDelegate{
-    
+extension LoginViewController : UITextFieldDelegate, LoginButtonDelegate{
+    //work with swiping across fields
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         if textField == emailField {
@@ -157,5 +173,46 @@ extension LoginViewController : UITextFieldDelegate{
         }
         
         return true
+    }
+    
+    
+    //facebool login
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+
+        guard let token = result?.token?.tokenString
+        else{
+            print("User failed to log in with Facebook")
+            return
+        }
+
+        //data of the user
+        let credential = FacebookAuthProvider.credential(withAccessToken: token)
+        print("credential: \(credential)")
+        FirebaseAuth.Auth.auth().signIn(with: credential, completion: {
+            [weak self] authResult,
+            error in
+
+            guard let strongSelf = self
+            else{
+                return
+            }
+
+            guard authResult != nil,error == nil
+            else{
+                if let error = error {
+                    print("Error while signing in with facebook: \(error) ")
+                }
+                return
+            }
+
+           print("User logged in with facebook.")
+            
+           strongSelf.navigationController?.dismiss(animated: true, completion: nil)
+        })
+
+    }
+
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+        //unnecessary
     }
 }
