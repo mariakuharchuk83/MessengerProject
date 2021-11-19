@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FBSDKCoreKit
+import GoogleSignIn
   
 @main
 //@UIApplicationMain
@@ -23,6 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             application,
             didFinishLaunchingWithOptions: launchOptions
         )
+        
+        
+       // GIDConfiguration.init(clientID: KGoogle.clientID)
+        GIDConfiguration.init(clientID: "602604942819-t192sg3mpa44qddh3tefirib6nsa00cs.apps.googleusercontent.com")
+      
 
         return true
     }
@@ -32,13 +38,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         open url: URL,
         options: [UIApplication.OpenURLOptionsKey : Any] = [:]
     ) -> Bool {
-
-        ApplicationDelegate.shared.application(
+        var flag: Bool = false
+        //Facebook
+         if ApplicationDelegate.shared.application(
             app,
             open: url,
             sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
             annotation: options[UIApplication.OpenURLOptionsKey.annotation]
-        )
+         ){
+             //URL Facebook
+             flag = ApplicationDelegate.shared.application(
+                app,
+                open: url,
+                sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+                annotation: options[UIApplication.OpenURLOptionsKey.annotation])
+         }
+        else {
+            //URL Google
+           flag = GIDSignIn.sharedInstance.handle(url)
+        }
+        
+        return flag
     }
 }
     

@@ -7,7 +7,9 @@
 
 import UIKit
 import FirebaseAuth
+import Firebase
 import FBSDKLoginKit
+import GoogleSignIn
 
 class LoginViewController: UIViewController {
 
@@ -75,6 +77,16 @@ class LoginViewController: UIViewController {
             return button
     }()
 
+    private let loginButtonGoogle: GIDSignInButton = {
+            let button = GIDSignInButton()
+            //button.permissions = ["public_profile", "email"]
+            button.layer.cornerRadius = 12
+            button.layer.masksToBounds = true
+            button.style = .standard
+           // button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
+            return button
+    }()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,6 +99,7 @@ class LoginViewController: UIViewController {
         emailField.delegate = self
         passwordField.delegate = self
         loginButtonFB.delegate = self
+        loginButtonGoogle.addTarget(self, action:  #selector(loginGoogle), for: .touchUpInside)
         
         /// Add subviews
         view.addSubview(scrollView)
@@ -95,6 +108,7 @@ class LoginViewController: UIViewController {
         scrollView.addSubview(passwordField)
         scrollView.addSubview(loginButton)
         scrollView.addSubview(loginButtonFB)
+        scrollView.addSubview(loginButtonGoogle)
     }
     
     override func viewDidLayoutSubviews() {
@@ -111,6 +125,8 @@ class LoginViewController: UIViewController {
         loginButton.frame = CGRect(x: 30, y: passwordField.buttom+20, width: scrollView.width-60, height: 52)
         
         loginButtonFB.frame = CGRect(x: 30, y: loginButton.buttom+20, width: scrollView.width-60, height: 52)
+        
+        loginButtonGoogle.frame = CGRect(x: 30, y: loginButtonFB.buttom+20, width: scrollView.width-60, height: 52)
         
     }
     
@@ -157,11 +173,64 @@ class LoginViewController: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    
+    @objc private func loginGoogle(){
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+        let config = GIDConfiguration(clientID: clientID)
+       //GIDSignIn.sharedInstance.sign
+        GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { [unowned self] user,
+            error in
+            
+            guard error == nil else {
+                return print(error)
+                
+            }
+
+                   guard let authentication = user?.authentication,
+                            let idToken = authentication.idToken  else {
+                     let error = NSError(
+                       domain: "GIDSignInError",
+                       code: -1,
+                       userInfo: [
+                         NSLocalizedDescriptionKey: "Unexpected sign in result: required authentication data is missing.",
+                       ]
+                     )
+                     return print(error)
+                   }
+
+                   let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+                                                                  accessToken: authentication.accessToken)
+            
+            FirebaseAuth.Auth.auth().signIn(with: credential, completion: {
+                [weak self] authResult,
+                error in
+                
+                guard let strongSelf = self
+                else{
+                    return
+                }
+                
+                guard authResult != nil,error == nil
+                else{
+                    if let error = error {
+                        print("Error while signing in with google: \(error) ")
+                    }
+                    return
+                }
+                
+                print("User logged in with google.")
+                
+                strongSelf.navigationController?.dismiss(animated: true, completion: nil)
+            })
+            
+            
+        }
+    }
 }
 
 
 
-extension LoginViewController : UITextFieldDelegate, LoginButtonDelegate{
+extension LoginViewController : UITextFieldDelegate, LoginButtonDelegate {
     //work with swiping across fields
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         

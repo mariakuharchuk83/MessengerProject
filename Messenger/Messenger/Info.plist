@@ -2,29 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIApplicationSceneManifest</key>
-	<dict>
-		<key>UIApplicationSupportsMultipleScenes</key>
-		<false/>
-		<key>UISceneConfigurations</key>
-		<dict>
-			<key>UIWindowSceneSessionRoleApplication</key>
-			<array>
-				<dict>
-					<key>UISceneConfigurationName</key>
-					<string>Default Configuration</string>
-					<key>UISceneDelegateClassName</key>
-					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
-					<key>UISceneStoryboardFile</key>
-					<string>Main</string>
-				</dict>
-			</array>
-		</dict>
-	</dict>
-	<key>NSCameraUsageDescription</key>
-	<string>Please allow access to take a profile picture</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Please allow access to select a profile picture</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -33,9 +10,19 @@
 				<string>fb489077192247912</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.602604942819-t192sg3mpa44qddh3tefirib6nsa00cs</string>
+			</array>
+		</dict>
 	</array>
 	<key>FacebookAppID</key>
 	<string>489077192247912</string>
+	<key>FacebookAutoLogAppEventsEnabled</key>
+	<false/>
 	<key>FacebookDisplayName</key>
 	<string>Messenger</string>
 	<key>LSApplicationQueriesSchemes</key>
@@ -56,7 +43,24 @@
 		<string>fbauth2</string>
 		<string>fbshareextension</string>
 	</array>
-    <key>FacebookAutoLogAppEventsEnabled</key>
-    <false/>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+		<key>UISceneConfigurations</key>
+		<dict>
+			<key>UIWindowSceneSessionRoleApplication</key>
+			<array>
+				<dict>
+					<key>UISceneConfigurationName</key>
+					<string>Default Configuration</string>
+					<key>UISceneDelegateClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
+					<key>UISceneStoryboardFile</key>
+					<string>Main</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
 </dict>
 </plist>
