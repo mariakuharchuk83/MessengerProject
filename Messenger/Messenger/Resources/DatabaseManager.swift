@@ -28,8 +28,7 @@ extension DataBaseManager{
     
     public func userExists(with email: String, completion: @escaping ((Bool)->Void) ) {
         
-        var safeEmail = email.replacingOccurrences(of: ".", with: "-")
-        safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
+        let safeEmail = email.parseToSafeEmail()
         
         database.child(safeEmail).observeSingleEvent(of: .value, with: { snapshot in
             guard snapshot.value as? String != nil
@@ -58,9 +57,7 @@ struct ChatAppUser{
    // let profilePictureURL: String
     
     var safeEmail: String {
-        var safeEmail = emailAdress.replacingOccurrences(of: ".", with: "-")
-        safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
-        return safeEmail
+        return emailAdress.parseToSafeEmail()
     }
 }
 

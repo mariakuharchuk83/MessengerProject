@@ -58,3 +58,30 @@ extension UIColor {
     }
 
 }
+
+extension StringProtocol{
+    public subscript(offset: Int) -> Character {
+        self[index(startIndex, offsetBy: offset)]
+    }
+}
+
+extension String{
+    func parseToSafeEmail() -> String {
+        var safeEmail  = self.replacingOccurrences(of: ".", with: "-")
+        safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
+        for i in 1...safeEmail.count
+        {
+            if safeEmail[i].isNumber {
+            if safeEmail[i-1] == "-" || safeEmail[i-1].isNumber{
+                break
+            }
+                safeEmail.insert("-", at: safeEmail.index(safeEmail.startIndex, offsetBy: i))
+            }
+        }
+        return safeEmail
+    }
+}
+
+extension Notification.Name{
+    static let didLogInNotification = Notification.Name("didLogInNotification")
+}

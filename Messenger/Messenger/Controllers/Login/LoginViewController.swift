@@ -79,17 +79,25 @@ class LoginViewController: UIViewController {
 
     private let loginButtonGoogle: GIDSignInButton = {
             let button = GIDSignInButton()
-            //button.permissions = ["public_profile", "email"]
             button.layer.cornerRadius = 12
             button.layer.masksToBounds = true
             button.style = .standard
-           // button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
             return button
     }()
 
+    private var loginObserver: NSObjectProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loginObserver = NotificationCenter.default.addObserver(forName: .didLogInNotification, object: nil, queue: .main, using: { [weak self] _ in
+            guard let strongSelf = self else{
+                return
+            }
+            
+            strongSelf.navigationController?.dismiss(animated: true, completion: nil)
+        })
+        
         title = "Log In"
         view.backgroundColor = .white
         
@@ -109,6 +117,12 @@ class LoginViewController: UIViewController {
         scrollView.addSubview(loginButton)
         scrollView.addSubview(loginButtonFB)
         scrollView.addSubview(loginButtonGoogle)
+    }
+    
+    deinit{
+        if let observer = loginObserver {
+            NotificationCenter.default.removeObserver(observer)
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -178,7 +192,7 @@ class LoginViewController: UIViewController {
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
         let config = GIDConfiguration(clientID: clientID)
        //GIDSignIn.sharedInstance.sign
-        GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { [unowned self] user,
+        GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { [weak self] user,
             error in
             
             guard error == nil else {
@@ -197,7 +211,24 @@ class LoginViewController: UIViewController {
                      )
                      return print(error)
                    }
+            
+                guard let user = user else { return }
 
+                let email = user.profile!.email
+
+                let firstName = user.profile!.givenName!
+                let lastName = user.profile!.familyName!
+
+                //let profilePicUrl = user.profile?.imageURL(withDimension: 320)
+                DataBaseManager.shared.userExists(with: email, completion: { exists in
+                    if !exists {
+                        //if not exists, add to database user's credential
+                        DataBaseManager.shared.insertUser(with: ChatAppUser(firstname: firstName, lastName: lastName, emailAdress: email))
+                    }
+               })
+            
+
+            
                    let credential = GoogleAuthProvider.credential(withIDToken: idToken,
                                                                   accessToken: authentication.accessToken)
             
@@ -219,7 +250,7 @@ class LoginViewController: UIViewController {
                 }
                 
                 print("User logged in with google.")
-                
+                NotificationCenter.default.post(name: .didLogInNotification, object: nil)
                 strongSelf.navigationController?.dismiss(animated: true, completion: nil)
             })
             
