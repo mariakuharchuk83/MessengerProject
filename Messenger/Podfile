@@ -14,7 +14,18 @@ pod 'Firebase/Database'
 pod 'FBSDKLoginKit'
 
 # Google
-
 pod 'GoogleSignIn'
+
+# Messages
+pod 'MessageKit'
+
+# Great activity
+pod 'JGProgressHUD'
+
+# Database (simple cash)
+pod 'RealmSwift'
+
+# Web loading image URL
+pod 'SDWebImage'
 
 end
