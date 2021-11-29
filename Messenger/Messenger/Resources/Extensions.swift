@@ -69,15 +69,15 @@ extension String{
     func parseToSafeEmail() -> String {
         var safeEmail  = self.replacingOccurrences(of: ".", with: "-")
         safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
-        for i in 1...safeEmail.count-1
-        {
-            if safeEmail[i].isNumber {
-            if safeEmail[i-1] == "-" || safeEmail[i-1].isNumber{
-                break
-            }
-                safeEmail.insert("-", at: safeEmail.index(safeEmail.startIndex, offsetBy: i))
-            }
-        }
+//        for i in 1...safeEmail.count-1
+//        {
+//            if safeEmail[i].isNumber {
+//            if safeEmail[i-1] == "-" || safeEmail[i-1].isNumber{
+//                break
+//            }
+//                safeEmail.insert("-", at: safeEmail.index(safeEmail.startIndex, offsetBy: i))
+//            }
+//        }
         return safeEmail
     }
 }

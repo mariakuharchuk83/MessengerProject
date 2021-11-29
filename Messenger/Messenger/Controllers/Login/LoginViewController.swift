@@ -179,6 +179,9 @@ class LoginViewController: UIViewController {
                 return
             }
             let user = result.user
+            
+            UserDefaults.standard.set(email, forKey: "email")
+            
             print("Signed In user: \(user)")
             strongSelf.navigationController?.dismiss(animated: true, completion: nil)
         }
@@ -230,10 +233,12 @@ class LoginViewController: UIViewController {
 
                 let pictureURL = user.profile?.imageURL(withDimension: 320)
             
+            UserDefaults.standard.set(email, forKey: "email")
+            
             DataBaseManager.shared.userExists(with: email, completion: { exists in
                 if !exists {
                     //if not exists, add to database user's credential
-                    let chatUser = ChatAppUser(firstname: firstName, lastName: lastName, emailAdress: email)
+                    let chatUser = ChatAppUser(firstname: firstName, lastName: lastName, emailAddress: email)
                     DataBaseManager.shared.insertUser(with: chatUser, completion: {success in
                         if success{
                             
@@ -353,12 +358,12 @@ extension LoginViewController : UITextFieldDelegate, LoginButtonDelegate {
                           return
                       }
                 
-                
+                UserDefaults.standard.set(email, forKey: "email")
                 //check if this user already exists(loged in without facebook)
                 DataBaseManager.shared.userExists(with: email, completion: { exists in
                     if !exists {
                         //if not exists, add to database user's credential
-                        let chatUser = ChatAppUser(firstname: firstName, lastName: lastName, emailAdress: email)
+                        let chatUser = ChatAppUser(firstname: firstName, lastName: lastName, emailAddress: email)
                         DataBaseManager.shared.insertUser(with: chatUser, completion: {success in
                             if success{
                                 

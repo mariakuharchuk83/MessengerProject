@@ -202,7 +202,7 @@ class RegisterViewController: UIViewController {
                     return
                 }
                
-                let chatUser = ChatAppUser(firstname: firstName, lastName: lastName, emailAdress: email)
+                let chatUser = ChatAppUser(firstname: firstName, lastName: lastName, emailAddress: email)
                 DataBaseManager.shared.insertUser(with: chatUser, completion: {success in
                     if success{
                         //upload image
