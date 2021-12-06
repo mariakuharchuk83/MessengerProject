@@ -180,7 +180,23 @@ class LoginViewController: UIViewController {
             }
             let user = result.user
             
+            DataBaseManager.shared.getDataFor(path: email.parseToSafeEmail(), completion: { result in
+                switch result {
+                case .failure(let error):
+                    print("Failed to get data by path: \(error)")
+                case .success(let data):
+                    guard let userData = data as? [String: Any],
+                          let firstName = userData["first_name"] as? String,
+                          let lastName = userData["last_name"] as? String else {
+                        return
+                    }
+                    
+                    UserDefaults.standard.set("\(firstName) \(lastName)", forKey: "name")
+                }
+            })
+            
             UserDefaults.standard.set(email, forKey: "email")
+           
             
             print("Signed In user: \(user)")
             strongSelf.navigationController?.dismiss(animated: true, completion: nil)
@@ -234,6 +250,7 @@ class LoginViewController: UIViewController {
                 let pictureURL = user.profile?.imageURL(withDimension: 320)
             
             UserDefaults.standard.set(email, forKey: "email")
+            UserDefaults.standard.set("\(firstName) \(lastName)", forKey: "name")
             
             DataBaseManager.shared.userExists(with: email, completion: { exists in
                 if !exists {
@@ -359,6 +376,7 @@ extension LoginViewController : UITextFieldDelegate, LoginButtonDelegate {
                       }
                 
                 UserDefaults.standard.set(email, forKey: "email")
+                UserDefaults.standard.set("\(firstName) \(lastName)", forKey: "name")
                 //check if this user already exists(loged in without facebook)
                 DataBaseManager.shared.userExists(with: email, completion: { exists in
                     if !exists {
