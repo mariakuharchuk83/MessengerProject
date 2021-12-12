@@ -23,8 +23,12 @@
 	<string>489077192247912</string>
 	<key>FacebookAutoLogAppEventsEnabled</key>
 	<false/>
+	<key>NSCameraUsageDescription</key>
+	<string>Please allow access to take a photo</string>
 	<key>FacebookDisplayName</key>
 	<string>Messenger</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Please allow access to select a photo</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
@@ -43,6 +47,8 @@
 		<string>fbauth2</string>
 		<string>fbshareextension</string>
 	</array>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Please allow access to send video and audio messages</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

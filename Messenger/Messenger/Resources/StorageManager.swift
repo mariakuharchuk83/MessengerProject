@@ -66,7 +66,7 @@ final class StorageManager{
     
     /// upload image that is going to be send as message
     public func uploadMessagePhoto(with data: Data, fileName: String, completion: @escaping UploadPictureCompletion){
-        storage.child("message_images/\(fileName)").putData(data, metadata: nil, completion: {
+        storage.child("message_images/\(fileName)").putData(data, metadata: nil, completion: { [weak self]
             metadata, error in
             guard error == nil else{
                 //failed
@@ -75,7 +75,33 @@ final class StorageManager{
                 return
             }
             
-            self.storage.child("message_images/\(fileName)").downloadURL(completion: {
+            self?.storage.child("message_images/\(fileName)").downloadURL(completion: {
+                url, error in
+                guard let url = url else {
+                    print("Failed to get URL ")
+                    completion(.failure(StorageErrors.failedToGetURL))
+                    return
+                }
+                
+                let urlString = url.absoluteString
+                print("download URL returned: \(urlString)")
+                completion(.success(urlString))
+            })
+        })
+    }
+    
+    /// upload video that is going to be send as message
+    public func uploadMessageVideo(with fileUrl: URL, fileName: String, completion: @escaping UploadPictureCompletion){
+        storage.child("message_videos/\(fileName)").putFile(from: fileUrl, metadata: nil, completion: { [weak self]
+            metadata, error in
+            guard error == nil else{
+                //failed
+                print("Failed to upload video to firebase")
+                completion(.failure(StorageErrors.failedUpload))
+                return
+            }
+            
+            self?.storage.child("message_videos/\(fileName)").downloadURL(completion: {
                 url, error in
                 guard let url = url else {
                     print("Failed to get URL ")

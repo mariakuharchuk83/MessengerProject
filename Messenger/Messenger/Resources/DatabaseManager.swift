@@ -382,11 +382,19 @@ extension DataBaseManager  {
                     break
                 case "photo":
                     guard let imageUrl = URL(string: content),
-                    let placeHolder = UIImage(systemName: "plus.circle") else {
-                        return nil
-                    }
+                          let placeHolder = UIImage(systemName: "plus.circle") else {
+                              return nil
+                          }
                     let media  = Media(url: imageUrl, image: nil, placeholderImage: placeHolder, size: CGSize(width: 300, height: 300))
                     kind = .photo(media)
+                    break
+                case "video":
+                    guard let videoUrl = URL(string: content),
+                          let placeHolder = UIImage(systemName: "video.fill") else {
+                              return nil
+                          }
+                    let media  = Media(url: videoUrl, image: nil, placeholderImage: placeHolder, size: CGSize(width: 300, height: 300))
+                    kind = .video(media)
                     break
                 default:
                     print("failed to set kind")
@@ -446,7 +454,10 @@ extension DataBaseManager  {
                     message = targetUrl
                 }
                 break
-            case .video(_):
+            case .video(let mediaItem):
+                if let targetUrl = mediaItem.url?.absoluteString {
+                    message = targetUrl
+                }
                 break
             case .location(_):
                 break
