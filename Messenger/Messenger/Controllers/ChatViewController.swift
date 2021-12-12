@@ -410,7 +410,7 @@ extension ChatViewController: MessageCellDelegate {
             }
             let vc = PhotoViewerViewController(with: imageUrl)
             self.navigationController?.pushViewController(vc, animated: true)
-        case .video(let media)
+        case .video(let media):
             guard let videoUrl = media.url else {
                 return
             }
