@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseDatabase
+import MessageKit
 
 /// The Singleton class defines the `shared` field that lets clients access the
 /// unique singleton instance.
@@ -374,10 +375,31 @@ extension DataBaseManager  {
                     return nil
                 }
                 
+                
+                var kind : MessageKind?
+                switch type {
+                case "text": kind = .text(content)
+                    break
+                case "photo":
+                    guard let imageUrl = URL(string: content),
+                    let placeHolder = UIImage(systemName: "plus.circle") else {
+                        return nil
+                    }
+                    let media  = Media(url: imageUrl, image: nil, placeholderImage: placeHolder, size: CGSize(width: 300, height: 300))
+                    kind = .photo(media)
+                    break
+                default:
+                    print("failed to set kind")
+                }
+                
+                guard let finalKind = kind else{
+                    return nil
+                }
+                
                 let sender = Sender(senderId: senderEmail, displayName: name, photoURL: "")
                 
                 
-                return Message(sender: sender, messageId: messageId, sentDate: date, kind: .text(content))
+                return Message(sender: sender, messageId: messageId, sentDate: date, kind: finalKind )
                 
             }
             completion(.success(messages))
@@ -419,7 +441,10 @@ extension DataBaseManager  {
                 break
             case .attributedText(_):
                 break
-            case .photo(_):
+            case .photo(let mediaItem):
+                if let targetUrl = mediaItem.url?.absoluteString {
+                    message = targetUrl
+                }
                 break
             case .video(_):
                 break
