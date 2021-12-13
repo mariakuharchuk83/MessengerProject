@@ -34,10 +34,15 @@ class ProfileViewController: UIViewController {
         let fileName = safeEmail + "_profile_picture.png"
         let path = "images/" + fileName
         
+        guard let name = UserDefaults.standard.value(forKey: "name") as? String else {
+            return nil
+        }
+        
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.width, height: 300))
-        headerView.backgroundColor = .link
+        //headerView.backgroundColor = .link
         
         let imageView = UIImageView(frame: CGRect(x: (headerView.width-150)/2, y: 75, width: 150, height: 150))
+        let nameLabel = UILabel(frame: CGRect(x: (headerView.width-170)/2, y: 250, width: headerView.width, height: 30))
         
         imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .white
@@ -45,7 +50,12 @@ class ProfileViewController: UIViewController {
         imageView.layer.borderWidth = 3
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = imageView.width/2
+        nameLabel.text = name
+        nameLabel.shadowColor = .darkGray
+        nameLabel.font = UIFont(name: "HelveticaNeue-Bold", size: CGFloat(20))
+        nameLabel.font.awakeFromNib()
         headerView.addSubview(imageView)
+        headerView.addSubview(nameLabel)
         
         StorageManager.shared.downloadURL(for: path, completion: { [weak self] result in
             switch result {
